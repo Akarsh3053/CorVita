@@ -12,40 +12,47 @@ st.set_page_config(
 
 heart_disease_model = pickle.load(open('model/heart_disease_model.sav', 'rb'))
 
+page = option_menu(
+    menu_title="Heart Disease Prediction",
+    options=["Home", "Prediction", "Suggestions"],
+    icons=["house-heart-fill", "clipboard2-pulse-fill", "postcard-heart-fill"],
+    menu_icon="heart-pulse",
+    orientation="horizontal")
 
-st.title('Heart Disease Prediction using ML')
+if page == "Home":
+    pass
 
-col1, col2, col3 = st.columns(3)
+if page == "Prediction":
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        age = st.text_input('Age')
+        trestbps = st.text_input('Resting Blood Pressure')
+        restecg = st.text_input('Resting Electrocardiograph results')
+        oldpeak = st.text_input('ST depression induced by exercise')
+        thal = st.text_input('thal: 0 = normal; 1 = fixed defect; 2 = reversible defect')
 
-with col1:
-    age = st.text_input('Age')
-    trestbps = st.text_input('Resting Blood Pressure')
-    restecg = st.text_input('Resting Electrocardiograph results')
-    oldpeak = st.text_input('ST depression induced by exercise')
-    thal = st.text_input('thal: 0 = normal; 1 = fixed defect; 2 = reversible defect')
+    with col2:
+        sex = st.text_input('Sex')
+        chol = st.text_input('Serum Cholesterol in mg/dl')
+        thalach = st.text_input('Maximum Heart Rate achieved')
+        slope = st.text_input('Slope of the peak exercise ST segment')
 
-with col2:
-    sex = st.text_input('Sex')
-    chol = st.text_input('Serum Cholesterol in mg/dl')
-    thalach = st.text_input('Maximum Heart Rate achieved')
-    slope = st.text_input('Slope of the peak exercise ST segment')
-
-with col3:
-    cp = st.text_input('Chest Pain types')
-    fbs = st.text_input('Fasting Blood Sugar > 120 mg/dl')
-    exang = st.text_input('Exercise Induced Angina')
-    ca = st.text_input('Major vessels colored by fluoroscopy')
+    with col3:
+        cp = st.text_input('Chest Pain types')
+        fbs = st.text_input('Fasting Blood Sugar > 120 mg/dl')
+        exang = st.text_input('Exercise Induced Angina')
+        ca = st.text_input('Major vessels colored by fluoroscopy')
 
 
-heart_diagnosis = ''
+    heart_diagnosis = ''
 
-if st.button('Heart Disease Test Result'):
-    heart_prediction = heart_disease_model.predict(
-        [[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]])
+    if st.button('Heart Disease Test Result'):
+        heart_prediction = heart_disease_model.predict(
+            [[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]])
 
-    if heart_prediction[0] == 1:
-        heart_diagnosis = 'The person is having heart disease'
-    else:
-        heart_diagnosis = 'The person does not have any heart disease'
+        if heart_prediction[0] == 1:
+            heart_diagnosis = 'The person is having heart disease'
+        else:
+            heart_diagnosis = 'The person does not have any heart disease'
 
-st.success(heart_diagnosis)
+    st.success(heart_diagnosis)
