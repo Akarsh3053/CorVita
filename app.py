@@ -87,3 +87,6 @@ if page == "Prediction":
         else:
             heart_diagnosis = 'The person does not have any heart disease'
             st.success(heart_diagnosis)
+
+if page == "Suggestions":
+    st.subheader("Here are some AI based suggestions for your better heart health.")
