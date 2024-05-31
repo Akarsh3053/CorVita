@@ -1,5 +1,6 @@
 import pickle
 import streamlit as st
+from chat import chat
 from streamlit_option_menu import option_menu
 
 # Page config
@@ -90,3 +91,5 @@ if page == "Prediction":
 
 if page == "Suggestions":
     st.subheader("Here are some AI based suggestions for your better heart health.")
+    prompt = st.text_input('Enter your query ...')
+    res = chat(prompt)
