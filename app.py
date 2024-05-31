@@ -1,6 +1,6 @@
 import pickle
 import streamlit as st
-from chat import chat
+from ChatAI import chat
 from streamlit_option_menu import option_menu
 
 # Page config
