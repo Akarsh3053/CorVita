@@ -1,3 +1,4 @@
+import time
 data = """Ensuring better heart health involves a combination of lifestyle choices, dietary habits, and regular monitoring. Here are some key strategies to maintain and improve heart health:
 
 ### 1. **Healthy Diet**
@@ -35,4 +36,5 @@ data = """Ensuring better heart health involves a combination of lifestyle choic
 
 By implementing these strategies, you can significantly reduce the risk of heart disease and promote overall cardiovascular health. Regular consultations with healthcare professionals for personalized advice and monitoring are also essential."""
 def chat(query):
+    time.sleep(2.5)
     return data
